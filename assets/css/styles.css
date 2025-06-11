@@ -1122,7 +1122,8 @@ body.dark-theme{
   }
 
   .nav__link-button::after{
-    background-color: transparent;
+    /* background-color: transparent; */
+    height: 0px;
   }
 
   .change-theme{
