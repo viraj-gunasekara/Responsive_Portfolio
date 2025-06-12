@@ -141,7 +141,8 @@ body.dark-theme{
               hsla(14, 88%, 50%, 0));
 }
 
-.dark-theme :is(.button__ghost){
+.dark-theme :is(.button__ghost),
+.dark-theme :is(.skills__arrow){
   color: var(--white-color);
 }
 
@@ -709,12 +710,6 @@ body.dark-theme{
 .skills__box:hover{
   transform: translateY(-.25rem);
 }
-
-
-
-
-
-
 
 /*=============== PROJECTS ===============*/
 .projects{
@@ -1491,5 +1486,14 @@ body.dark-theme{
   /* skills */
   .skills__container{
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .skills__title{
+    font-size: x-large;
+  }
+
+  .skills__name{
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-medium);
   }
 }

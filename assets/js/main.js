@@ -127,7 +127,7 @@ themeButton.addEventListener('click', () => {
 /*=============== SCROLL REVEAL ANIMATION ===============*/
 const sr = ScrollReveal({
   origin: 'top',
-  distance: '60px',
+  distance: '30px',
   duration: 2500,
   delay: 400,
   // reset: true  //Animation repeat
@@ -137,20 +137,21 @@ sr.reveal(`.home__perfil, .about__image, .contact__mail`, {origin: 'right'})
 sr.reveal(`.home__name, .home__info,
            .about__container .section__title-1, .about__info,
            .contact__social, .contact__data`, {origin: 'left'})
-sr.reveal(`.projects__card`, {interval: 100})
+sr.reveal(`.projects__card, .skills`, {interval: 90})
 
 /*=============== SKILLS ACCORDION ===============*/ 
 const skillsContent = document.getElementsByClassName('skills__content'),
       skillsHeader = document.querySelectorAll('.skills__header')
 
 function toggleSkills(){
-    let itemClass = this.parentNode.className
+    let parent = this.parentNode;
 
-    for(i = 0; i < skillsContent.length; i++){
-        skillsContent[i].className = 'skills__content skills__close'
-    }
-    if(itemClass === 'skills__content skills__close'){
-        this.parentNode.className = 'skills__content skills__open'
+    if (parent.classList.contains('skills__open')) {
+        parent.classList.remove('skills__open');
+        parent.classList.add('skills__close');
+    } else {
+        parent.classList.remove('skills__close');
+        parent.classList.add('skills__open');
     }
 }
 
