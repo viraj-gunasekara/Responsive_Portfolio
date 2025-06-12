@@ -2,6 +2,8 @@ https://fonts.google.com/
 https://remixicon.com/
 https://favicon.io/
 https://www.photopea.com/
+https://www.worldvectorlogo.com/
+https://svgl.app/
 EmailJs
 ScrollRevealJs
 Netlify
