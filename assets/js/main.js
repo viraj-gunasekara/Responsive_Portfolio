@@ -112,6 +112,8 @@ if (selectedTheme) {
   // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
   document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
   themeButton.classList[selectedIcon === 'ri-moon-clear-line' ? 'add' : 'remove'](iconTheme)
+
+  updateThemeIcons(selectedTheme === 'dark') // set icon state correctly
 }
 
 // Activate / deactivate the theme manually with the button
@@ -122,7 +124,20 @@ themeButton.addEventListener('click', () => {
     // We save the theme and the current icon that the user chose
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
+
+    // Update all icons based on current theme
+    updateThemeIcons(document.body.classList.contains(darkTheme))
 })
+
+//Theme chnage in Icons in Skills
+function updateThemeIcons(isDark) {
+  const themeIcons = document.querySelectorAll('.theme-icon')
+  themeIcons.forEach(img => {
+    const newSrc = isDark ? img.dataset.dark : img.dataset.light
+    if (newSrc) img.src = newSrc
+  })
+}
+
 
 /*=============== SCROLL REVEAL ANIMATION ===============*/
 const sr = ScrollReveal({
