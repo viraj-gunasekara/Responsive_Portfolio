@@ -141,7 +141,8 @@ body.dark-theme{
               hsla(14, 88%, 50%, 0));
 }
 
-.dark-theme :is(.button__ghost){
+.dark-theme :is(.button__ghost),
+.dark-theme :is(.skills__arrow){
   color: var(--white-color);
 }
 
@@ -633,9 +634,121 @@ body.dark-theme{
   column-gap: 1rem;
 }
 
+.details__container{
+  padding: 1.5rem;
+  flex: 1;
+  background-color: var(--container-color);
+  border: 2px solid var(--black-color-light);
+  border-radius: 1.5rem;
+  text-align: center;
+  margin: 1rem 0 2rem;
+  box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.1);
+  transition: background-color 0.4s, box-shadow 0.4s;
+}
+
+.details__container-top{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 1rem;
+}
+
+.edu-icon {
+  font-size: 2rem;
+  color: var(--text-color);
+  margin-bottom: 0.75rem;
+}
+
+.details__container .heading {
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-bold);
+  color: var(--title-color);
+  margin-bottom: 0.5rem;
+}
+
+.details__container .heading-description {
+  font-size: var(--body-font);
+  font-weight: var(--font-semi-bold);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
 
 /*=============== SERVICES ===============*/
 
+/*=============== SKILLS ===============*/
+.skills__container{
+  row-gap: 0;
+}
+
+.skills__header{
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.skills__icon,
+.skills__arrow{
+  font-size: 2rem;
+  color: var(--black-color-light);
+}
+
+.skills__icon{
+  margin-right: 1rem;
+}
+
+.skills__title{
+  font-size: var(--h2-font-size);
+}
+
+.skills__arrow{
+  margin-left: auto;
+  margin-top: 4px;
+  transition: .4s;
+}
+
+.skills__close .skills__content_icons{
+  height: 0;
+  overflow: hidden;
+}
+
+.skills__open .skills__content_icons{
+  height: max-content;
+  margin-bottom: 10px;
+}
+
+.skills__open .skills__arrow{
+  transform: rotate(-180deg);
+}
+
+/* ********************* */
+.skills__img{
+  width: 35px;
+  margin-bottom: .5rem;
+}
+
+.skills__name{
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+}
+
+.skills__content_icons{
+  grid-template-columns: repeat(3, max-content);
+  justify-content: space-around;
+  align-items: flex-end;
+  margin: 0rem 2rem 2rem 1rem;
+}
+
+.skills__box{
+  display: grid;
+  place-items: center;
+  transition: transform .4s;
+}
+
+.skills__box:hover{
+  transform: translateY(-.25rem);
+}
 
 /*=============== PROJECTS ===============*/
 .projects{
@@ -645,6 +758,7 @@ body.dark-theme{
 
 .projects__container{
   row-gap: 2rem;
+  
 }
 
 .projects__card{
@@ -723,6 +837,7 @@ body.dark-theme{
 
 .projects__card:hover{
   background-color: var(--white-color);
+  /* transform: translateY(-.35rem); */
 }
 
 /*=============== CONTACT ===============*/
@@ -1015,13 +1130,32 @@ body.dark-theme{
   .contact__data .section__title-2{
     transform: translateX(0);
   }
+
+  /* education */
+  .details__container {
+    padding: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .details__container .heading {
+    font-size: 1rem;
+  }
+
+  .details__container .heading-description {
+    font-size: 0.85rem;
+  }
+
+  .edu-icon {
+  font-size: 1.1rem;
+  }
 }
 
-/* For medium devices */
+/* For medium1 devices */
 @media screen and (min-width: 576px){
   .home__container,
   .about__container,
-  .projects__container{
+  .projects__container,
+  .skills__container{
     grid-template-columns: 350px;
     justify-content: center;
   }
@@ -1049,11 +1183,35 @@ body.dark-theme{
   .contact__social-description-1{
     color: var(--title-color);
   }
+
+  /* education */
+  .details__container {
+    padding: 0.9rem;
+  }
+  
+  .edu-icon {
+  font-size: 1.4rem;
+  }
 }
 
+/* For medium2 devices */
 @media screen and (min-width: 768px){
   .projects__container{
     grid-template-columns: repeat(2, 350px);
+  }
+
+  /* skills */
+  .skills__container{
+    grid-template-columns: repeat(2, 350px);
+  }
+
+  /* education */
+  .details__container {
+    padding: 0.9rem;
+  }
+  
+  .edu-icon {
+  font-size: 1.5rem;
   }
 }
 
@@ -1294,6 +1452,20 @@ body.dark-theme{
     font-size: 1.6rem;
   }
 
+  /* education */
+  .details__container {
+    padding: 2.5rem;
+    max-width: none;
+  }
+
+  .details__container .heading {
+    font-size: 1.5rem;
+  }
+
+  .details__container .heading-description {
+    font-size: 1.2rem;
+  }
+
   /* projects */
   .projects__container{
     grid-template-columns: repeat(3, 352px);
@@ -1398,5 +1570,19 @@ body.dark-theme{
 
   .scrollup{
     right: 3rem;
+  }
+
+  /* skills */
+  .skills__container{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .skills__title{
+    font-size: x-large;
+  }
+
+  .skills__name{
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-medium);
   }
 }

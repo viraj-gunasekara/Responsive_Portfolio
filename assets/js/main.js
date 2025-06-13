@@ -112,6 +112,8 @@ if (selectedTheme) {
   // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
   document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
   themeButton.classList[selectedIcon === 'ri-moon-clear-line' ? 'add' : 'remove'](iconTheme)
+
+  updateThemeIcons(selectedTheme === 'dark') // set icon state correctly
 }
 
 // Activate / deactivate the theme manually with the button
@@ -122,12 +124,25 @@ themeButton.addEventListener('click', () => {
     // We save the theme and the current icon that the user chose
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
+
+    // Update all icons based on current theme
+    updateThemeIcons(document.body.classList.contains(darkTheme))
 })
+
+//Theme chnage in Icons in Skills
+function updateThemeIcons(isDark) {
+  const themeIcons = document.querySelectorAll('.theme-icon')
+  themeIcons.forEach(img => {
+    const newSrc = isDark ? img.dataset.dark : img.dataset.light
+    if (newSrc) img.src = newSrc
+  })
+}
+
 
 /*=============== SCROLL REVEAL ANIMATION ===============*/
 const sr = ScrollReveal({
   origin: 'top',
-  distance: '60px',
+  distance: '30px',
   duration: 2500,
   delay: 400,
   // reset: true  //Animation repeat
@@ -137,4 +152,24 @@ sr.reveal(`.home__perfil, .about__image, .contact__mail`, {origin: 'right'})
 sr.reveal(`.home__name, .home__info,
            .about__container .section__title-1, .about__info,
            .contact__social, .contact__data`, {origin: 'left'})
-sr.reveal(`.projects__card`, {interval: 100})
+sr.reveal(`.projects__card, .skills`, {interval: 90})
+
+/*=============== SKILLS ACCORDION ===============*/ 
+const skillsContent = document.getElementsByClassName('skills__content'),
+      skillsHeader = document.querySelectorAll('.skills__header')
+
+function toggleSkills(){
+    let parent = this.parentNode;
+
+    if (parent.classList.contains('skills__open')) {
+        parent.classList.remove('skills__open');
+        parent.classList.add('skills__close');
+    } else {
+        parent.classList.remove('skills__close');
+        parent.classList.add('skills__open');
+    }
+}
+
+skillsHeader.forEach((el) =>{
+    el.addEventListener('click', toggleSkills)
+})
