@@ -115,3 +115,57 @@ thumbs.forEach((thumb, i) => {
     resetZoom();
   });
 });
+
+// Fit-to-Screen Toggle Logic 
+const fitToScreenBtn = document.getElementById("fitToScreenBtn");
+
+let isFitToScreen = false;
+
+fitToScreenBtn.addEventListener("click", () => {
+  isFitToScreen = !isFitToScreen;
+
+  if (isFitToScreen) {
+    mainImage.classList.add("fit-screen");
+    mainImage.style.transform = "none";
+  } else {
+    mainImage.classList.remove("fit-screen");
+    applyZoom(); // restore previous zoom
+  }
+});
+
+// Also reset fit-to-screen when navigating or closing
+function resetFitToScreen() {
+  isFitToScreen = false;
+  mainImage.classList.remove("fit-screen");
+}
+
+modalClose.addEventListener("click", resetFitToScreen);
+prevBtn.addEventListener("click", resetFitToScreen);
+nextBtn.addEventListener("click", resetFitToScreen);
+thumbs.forEach((thumb) => {
+  thumb.addEventListener("click", resetFitToScreen);
+});
+
+// keyboard controls to image modal
+const imageModal = document.getElementById("imageModal");
+// const modalClose = document.getElementById("modalCloseBtn");
+// const prevBtn = document.getElementById("prevBtn");
+// const nextBtn = document.getElementById("nextBtn");
+
+document.addEventListener("keydown", (event) => {
+  const isModalVisible = !imageModal.classList.contains("hidden");
+
+  if (!isModalVisible) return;
+
+  switch (event.key) {
+    case "Escape":
+      modalClose.click(); // simulate close
+      break;
+    case "ArrowLeft":
+      prevBtn.click(); // go to previous image
+      break;
+    case "ArrowRight":
+      nextBtn.click(); // go to next image
+      break;
+  }
+});

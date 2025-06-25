@@ -1206,6 +1206,16 @@ body.dark-theme {
   transition: transform 0.3s ease;
 }
 
+/* Fit-to-Screen Style  */
+.modal-main-view img.fit-screen {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  object-fit: contain;
+  transform: none !important;
+}
+
+
 
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
