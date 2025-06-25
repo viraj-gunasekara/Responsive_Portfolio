@@ -171,7 +171,7 @@
          <div class="skills__container container grid">
             <div>
                <!-- skills ##1 Frontend -->
-                <div class="skills__content skills__open">
+               <div class="skills__content skills__open">
                   <div class="skills__header">
                      <i class="ri-braces-fill skills__icon"></i>
 
@@ -230,12 +230,12 @@
                      </div>
                      <!-- End  -->
                   </div>
-                </div>
+               </div>
             </div>
 
             <div>
-                <!-- skills ##2 Backend -->
-                <div class="skills__content skills__close">
+               <!-- skills ##2 Backend -->
+               <div class="skills__content skills__close">
                   <div class="skills__header">
                      <i class="ri-server-fill skills__icon"></i>
 
@@ -259,7 +259,9 @@
                      </div>
                      <!-- skill3 dark/light-->
                      <div class="skills__box">
-                        <img src="assets/img/skill_icons/Express.js_light.svg" alt="image" class="skills__img theme-icon" data-light="assets/img/skill_icons/Express.js_light.svg" data-dark="assets/img/skill_icons/Express.js_dark.svg">
+                        <img src="assets/img/skill_icons/Express.js_light.svg" alt="image"
+                           class="skills__img theme-icon" data-light="assets/img/skill_icons/Express.js_light.svg"
+                           data-dark="assets/img/skill_icons/Express.js_dark.svg">
                         <span class="skills__name">Express JS</span>
                      </div>
                      <!-- skill3 -->
@@ -274,12 +276,12 @@
                      </div>
                      <!-- End  -->
                   </div>
-                </div>
+               </div>
             </div>
 
             <div>
-                <!-- skills ##3 DB Tools -->
-                <div class="skills__content skills__close">
+               <!-- skills ##3 DB Tools -->
+               <div class="skills__content skills__close">
                   <div class="skills__header">
                      <i class="ri-tools-fill skills__icon"></i>
 
@@ -313,7 +315,9 @@
                      </div>
                      <!-- skill5 dark/light-->
                      <div class="skills__box">
-                        <img src="assets/img/skill_icons/github_light.svg" alt="image" class="skills__img theme-icon" data-light="assets/img/skill_icons/github_light.svg" data-dark="assets/img/skill_icons/github_dark.svg">
+                        <img src="assets/img/skill_icons/github_light.svg" alt="image" class="skills__img theme-icon"
+                           data-light="assets/img/skill_icons/github_light.svg"
+                           data-dark="assets/img/skill_icons/github_dark.svg">
                         <span class="skills__name">GitHub</span>
                      </div>
                      <!-- skill6 -->
@@ -338,9 +342,9 @@
                      </div>
                      <!-- End  -->
                   </div>
-                </div>
+               </div>
             </div>
-            
+
          </div>
       </section>
 
@@ -356,9 +360,10 @@
                <div class="projects__image">
                   <img src="assets/img/project-1.jpg" alt="image" class="projects__img">
 
-                  <a href="#" class="projects__button button">
+                  <a href="#" class="projects__button button open-modal" data-index="0">
                      <i class="ri-arrow-right-up-line"></i>
                   </a>
+
                </div>
 
                <div class="projects__content">
@@ -569,14 +574,14 @@
                <div class="contact__social-data">
                   <div>
                      <p class="contact__social-description-1">
-                     Write me on my social networks
+                        Write me on my social networks
                      </p>
                   </div>
 
                   <div class="contact__social-links">
-                  <a href="https://www.linkedin.com/" target="_blank" class="contact__social-link">
-                     <i class="ri-linkedin-box-fill"></i>
-                  </a>
+                     <a href="https://www.linkedin.com/" target="_blank" class="contact__social-link">
+                        <i class="ri-linkedin-box-fill"></i>
+                     </a>
                   </div>
                </div>
             </div>
@@ -609,6 +614,42 @@
       <i class="ri-arrow-up-s-line"></i>
    </a>
 
+   <!-- ========== Image Modal ========== -->
+   <div id="imageModal" class="image-modal hidden">
+      <div class="modal-header">
+         <span id="imageIndex">1/6</span>
+         <h2 id="imageTitle">Project Image</h2>
+         <i class="ri-close-large-line modal-close" id="modalCloseBtn"></i>
+      </div>
+
+      <div class="modal-body">
+         <div class="modal-main-view">
+            <i class="ri-arrow-left-s-line modal-arrow" id="prevBtn"></i>
+            <img id="mainImage" src="assets/img/project-1.jpg" alt="Preview Image">
+            <i class="ri-arrow-right-s-line modal-arrow" id="nextBtn"></i>
+         </div>
+
+         <div class="modal-thumbnails">
+            <div class="thumbs-wrapper">
+               <!-- Thumbnails -->
+               <img src="assets/img/project-1.jpg" class="thumb active" data-index="0" alt="thumb">
+               <img src="assets/img/project-2.jpg" class="thumb" data-index="1" alt="thumb">
+               <img src="assets/img/project-3.jpg" class="thumb" data-index="2" alt="thumb">
+               <img src="assets/img/project-1.jpg" class="thumb" data-index="3" alt="thumb">
+               <img src="assets/img/project-2.jpg" class="thumb" data-index="4" alt="thumb">
+               <img src="assets/img/project-3.jpg" class="thumb" data-index="5" alt="thumb">
+            </div>
+         </div>
+      </div>
+
+      <div class="modal-footer">
+         <i class="ri-zoom-out-line"></i>
+         <i class="ri-zoom-in-line"></i>
+         <i class="ri-collapse-diagonal-line"></i>
+      </div>
+   </div>
+
+
    <!--=============== SCROLLREVEAL ===============-->
    <script src="assets/js/scrollreveal.min.js"></script>
 
@@ -618,6 +659,8 @@
 
    <!--=============== MAIN JS ===============-->
    <script src="assets/js/main.js"></script>
+   <!-- image gallery-modal  -->
+   <script src="assets/js/gallery-modal.js"></script>
 </body>
 
 </html>
