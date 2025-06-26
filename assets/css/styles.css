@@ -19,6 +19,7 @@
   --body-color: hsl(0, 0%, 87%);
   --container-color: hsl(0, 0%, 83%);
   --project-cards-color: hsl(0, 0%, 90%);
+  --image-modal-arrow-color: rgba(70, 70, 70, 0.3);
 
   /*========== Font and typography ==========*/
   /*.5rem = 8px | 1rem = 16px ...*/
@@ -123,6 +124,7 @@ body.dark-theme {
   --body-color: hsl(0, 0%, 8%);
   --container-color: hsl(0, 0%, 12%);
   --project-cards-color: hsl(0, 0%, 9%);
+  --image-modal-arrow-color: rgba(0, 0, 0, 0.3);
 }
 
 /*========== 
@@ -1108,17 +1110,18 @@ body.dark-theme {
   bottom: 3rem;
 }
 
-/* image gallery-modal  */
+/*=============== IMAGE GALLERY MODAL ===============*/
 .image-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.9); /* Website background */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   z-index: 1000;
   padding: 20px;
 }
@@ -1127,64 +1130,118 @@ body.dark-theme {
   display: none;
 }
 
-.modal-header,
-.modal-footer {
+/* ========== Modal Header ========== */
+.modal-header {
+  width: 890px;
+  background-color: var(--black-color);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #fff;
+  padding: 10px 15px;
+  color: var(--white-color);
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 6px 6px 0 0;
 }
 
+.modal-header h2 {
+  flex: 1;
+  text-align: center;
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--white-color);
+}
+
+.modal-header i {
+  cursor: pointer;
+  font-size: 1.4rem;
+}
+
+.modal-header #imageIndex{
+  padding-left: 35px;
+}
+
+/* ========== Modal Body ========== */
+.modal-body {
+  display: flex;
+  width: 890px;
+  background-color: var(--black-color);
+}
+
+/* Main image view */
 .modal-main-view {
-  flex-grow: 1;
+  background-color: var(--black-color);
+  flex: 1;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  overflow: hidden;
+  padding: 10px;
 }
 
 .modal-main-view img {
-  max-width: 90%;
-  max-height: 80vh;
-  border-radius: 10px;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
+/* Arrows */
 .modal-arrow {
   color: white;
-  font-size: 2rem;
+  font-size: 2.1rem;
   cursor: pointer;
-  padding: 0 20px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
+  background: var(--image-modal-arrow-color);
+  padding: 5px;
+  border-radius: 50%;
 }
 
 #prevBtn {
-  left: 0;
+  left: 310px;
 }
 #nextBtn {
-  right: 0;
+  right: 470px;
 }
 
+/* Thumbnails */
 .modal-thumbnails {
-  height: 120px;
-  overflow-y: auto;
-  padding: 10px 0;
+  width: 160px;
+  background-color: var(--black-color);
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 430px;
+  padding: 10px;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #666 transparent;
+}
+
+.modal-thumbnails::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-thumbnails::-webkit-scrollbar-thumb {
+  background-color: #666;
+  border-radius: 3px;
+}
+
+.modal-thumbnails::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .thumbs-wrapper {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-height: 100%;
 }
 
 .thumb {
-  width: 60px;
-  height: auto;
+  width: 100%;
   cursor: pointer;
   opacity: 0.6;
   border-radius: 4px;
@@ -1193,29 +1250,49 @@ body.dark-theme {
 
 .thumb.active {
   opacity: 1;
-  border: 2px solid #fff;
+  border: 2px solid white;
 }
 
-/* Zoom Styles  */
+/* ========== Modal Footer ========== */
+.modal-footer {
+  width: 890px;
+  background-color: var(--black-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  padding-bottom: 15px;
+  gap: 20px;
+  border-radius: 0 0 6px 6px;
+}
+
+.modal-footer i {
+  font-size: 1.5rem;
+  color: var(--white-color);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.modal-footer i:hover {
+  transform: scale(1.2);
+}
+
+/* ========== Zoom & Fit Classes ========== */
 .modal-main-view.zoomed img {
   cursor: grab;
 }
 
 .modal-main-view img.zoomed {
   transform-origin: center center;
-  transition: transform 0.3s ease;
 }
 
-/* Fit-to-Screen Style  */
 .modal-main-view img.fit-screen {
   width: 100%;
   height: auto;
-  max-height: 80vh;
+  max-height: 100%;
   object-fit: contain;
   transform: none !important;
 }
-
-
 
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */

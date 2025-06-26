@@ -616,22 +616,29 @@
 
    <!-- ========== Image Modal ========== -->
    <div id="imageModal" class="image-modal hidden">
+      <!-- Yellow Header -->
       <div class="modal-header">
          <span id="imageIndex">1/6</span>
-         <h2 id="imageTitle">Project Image</h2>
-         <i class="ri-close-large-line modal-close" id="modalCloseBtn"></i>
+         <h2 id="imageTitle">image name</h2>
+         <i class="ri-close-large-line modal-close" id="modalCloseBtn" title="Close"></i>
       </div>
 
+      <!-- Main Modal Body: Gray - Black - Gray - Blue -->
       <div class="modal-body">
+         <!-- Left Gray (Arrow) -->
+         <i class="ri-arrow-left-s-line modal-arrow" id="prevBtn"></i>
+
+         <!-- Black Main Image View -->
          <div class="modal-main-view">
-            <i class="ri-arrow-left-s-line modal-arrow" id="prevBtn"></i>
             <img id="mainImage" src="assets/img/project-1.jpg" alt="Preview Image">
-            <i class="ri-arrow-right-s-line modal-arrow" id="nextBtn"></i>
          </div>
 
+         <!-- Right Gray (Arrow) -->
+         <i class="ri-arrow-right-s-line modal-arrow" id="nextBtn"></i>
+
+         <!-- Blue Thumbnails Panel -->
          <div class="modal-thumbnails">
             <div class="thumbs-wrapper">
-               <!-- Thumbnails -->
                <img src="assets/img/project-1.jpg" class="thumb active" data-index="0" alt="thumb">
                <img src="assets/img/project-2.jpg" class="thumb" data-index="1" alt="thumb">
                <img src="assets/img/project-3.jpg" class="thumb" data-index="2" alt="thumb">
@@ -642,6 +649,7 @@
          </div>
       </div>
 
+      <!-- Green Footer -->
       <div class="modal-footer">
          <i class="ri-zoom-out-line" id="zoomOutBtn" title="Zoom Out"></i>
          <i class="ri-zoom-in-line" id="zoomInBtn" title="Zoom In"></i>
