@@ -4,40 +4,103 @@ const imageIndex = document.getElementById("imageIndex");
 const modalClose = document.getElementById("modalCloseBtn");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
-const thumbs = document.querySelectorAll(".thumb");
 
 let currentIndex = 0;
 
-const images = [
-  "assets/img/project-1.jpg",
-  "assets/img/project-2.jpg",
-  "assets/img/project-3.jpg",
-  "assets/img/project-1.jpg",
-  "assets/img/project-2.jpg",
-  "assets/img/project-3.jpg",
-];
+// define images per project
+const projectImages = {
+  "project-1": [
+    "assets/img/project-1.jpg",
+    "assets/img/project-2.jpg",
+    "assets/img/project-3.jpg",
+    "assets/img/project-1.jpg",
+    "assets/img/project-2.jpg",
+    "assets/img/project-3.jpg",
+  ],
+  "project-2": [
+    "assets/img/project-1.jpg",
+    "assets/img/project-2.jpg",
+    "assets/img/project-3.jpg",
+  ],
+  "project-3": [
+    "assets/img/project-1.jpg",
+    "assets/img/project-2.jpg",
+    "assets/img/project-3.jpg",
+    "assets/img/project-1.jpg",
+  ],
+  "project-4": [
+    "assets/img/project-1.jpg",
+    "assets/img/project-2.jpg",
+    "assets/img/project-3.jpg",
+    "assets/img/project-1.jpg",
+  ],
+  "project-5": [
+    "assets/img/project-1.jpg",
+    "assets/img/project-2.jpg",
+    "assets/img/project-3.jpg",
+    "assets/img/project-1.jpg",
+  ],
+};
+
+// update global images and regenerate thumbnails dynamically
+let images = [];
 
 function updateModal(index) {
   currentIndex = index;
-  mainImage.src = images[index];
+
+  // Reset thumbnails
+  const thumbsWrapper = document.querySelector(".thumbs-wrapper");
+  thumbsWrapper.innerHTML = "";
+
+  images.forEach((imgPath, i) => {
+    const thumb = document.createElement("img");
+    thumb.src = imgPath;
+    thumb.className = "thumb" + (i === index ? " active" : "");
+    thumb.dataset.index = i;
+    thumb.alt = "thumb";
+
+    thumb.addEventListener("click", () => {
+      updateModal(i);
+      resetZoom();
+      resetFitToScreen();
+    });
+
+    thumbsWrapper.appendChild(thumb);
+  });
+
+  //set main image AFTER thumbnails are added to DOM
+  const imagePath = images[index];
+  mainImage.src = imagePath;
   imageIndex.textContent = `${index + 1}/${images.length}`;
-  document
-    .querySelectorAll(".thumb")
-    .forEach((t) => t.classList.remove("active"));
-  thumbs[index].classList.add("active");
+  imageTitle.textContent = getImageName(imagePath);
 }
 
+
+function getImageName(path) {
+  return path.split("/").pop().split(".")[0]; // Extracts "project-3d" from path
+}
+
+// attach modal open logic to each project
 document.querySelectorAll(".open-modal").forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
-    const index = parseInt(btn.getAttribute("data-index"));
-    updateModal(index);
+    const projectId = btn.getAttribute("data-project-id");
+    if (!projectImages[projectId]) return;
+
+    images = projectImages[projectId];
+    updateModal(0);
     modal.classList.remove("hidden");
+    disableScroll();
   });
 });
 
+// clean up modal close
 modalClose.addEventListener("click", () => {
   modal.classList.add("hidden");
+  enableScroll();
+  resetZoom();
+  resetFitToScreen();
+  currentIndex = 0;
 });
 
 prevBtn.addEventListener("click", () => {
@@ -48,12 +111,6 @@ prevBtn.addEventListener("click", () => {
 nextBtn.addEventListener("click", () => {
   const index = (currentIndex + 1) % images.length;
   updateModal(index);
-});
-
-thumbs.forEach((thumb, i) => {
-  thumb.addEventListener("click", () => {
-    updateModal(i);
-  });
 });
 
 // Zoom Logic
@@ -116,7 +173,7 @@ thumbs.forEach((thumb, i) => {
   });
 });
 
-// Fit-to-Screen Toggle Logic 
+// Fit-to-Screen Toggle Logic
 const fitToScreenBtn = document.getElementById("fitToScreenBtn");
 
 let isFitToScreen = false;
@@ -168,4 +225,31 @@ document.addEventListener("keydown", (event) => {
       nextBtn.click(); // go to next image
       break;
   }
+});
+
+// Disable background scroll
+function disableScroll() {
+  document.body.classList.add("no-scroll");
+}
+
+// Enable background scroll
+function enableScroll() {
+  document.body.classList.remove("no-scroll");
+}
+
+// On modal open
+document.querySelectorAll(".open-modal").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const index = parseInt(btn.getAttribute("data-index"));
+    updateModal(index);
+    modal.classList.remove("hidden");
+    disableScroll(); // Disable background scroll
+  });
+});
+
+// On modal close
+modalClose.addEventListener("click", () => {
+  modal.classList.add("hidden");
+  enableScroll(); // Enable background scroll
 });
