@@ -169,3 +169,30 @@ document.addEventListener("keydown", (event) => {
       break;
   }
 });
+
+// Disable background scroll
+function disableScroll() {
+  document.body.classList.add('no-scroll');
+}
+
+// Enable background scroll
+function enableScroll() {
+  document.body.classList.remove('no-scroll');
+}
+
+// On modal open
+document.querySelectorAll(".open-modal").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const index = parseInt(btn.getAttribute("data-index"));
+    updateModal(index);
+    modal.classList.remove("hidden");
+    disableScroll(); // ✅ Disable background scroll
+  });
+});
+
+// On modal close
+modalClose.addEventListener("click", () => {
+  modal.classList.add("hidden");
+  enableScroll(); // ✅ Enable background scroll
+});

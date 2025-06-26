@@ -1290,6 +1290,13 @@ body.dark-theme {
   transform: none !important;
 }
 
+/* Prevent Page Scroll When Modal Is Open  */
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+
 /*=============== BREAKPOINTS ===============*/
 /* For small devices - 340px & below */
 @media screen and (max-width: 340px) {
