@@ -75,7 +75,6 @@ function updateModal(index) {
   imageTitle.textContent = getImageName(imagePath);
 }
 
-
 function getImageName(path) {
   return path.split("/").pop().split(".")[0]; // Extracts "project-3d" from path
 }
@@ -123,8 +122,67 @@ const zoomInBtn = document.querySelector(".ri-zoom-in-line");
 const zoomOutBtn = document.querySelector(".ri-zoom-out-line");
 const mainImageContainer = document.querySelector(".modal-main-view");
 
+let isFitToScreen = false;
+let isDragging = false;
+let startX, startY;
+let currentX = 0;
+let currentY = 0;
+let animationFrame;
+
+function updateTransform() {
+  mainImage.style.transform = `scale(${zoomLevel}) translate(${currentX}px, ${currentY}px)`;
+}
+
+// Mouse Drag
+mainImage.addEventListener("mousedown", (e) => {
+  if (zoomLevel <= 1 || isFitToScreen) return;
+  isDragging = true;
+  startX = e.clientX - currentX;
+  startY = e.clientY - currentY;
+  mainImage.style.cursor = "grabbing";
+  e.preventDefault();
+});
+
+document.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+  currentX = e.clientX - startX;
+  currentY = e.clientY - startY;
+
+  cancelAnimationFrame(animationFrame);
+  animationFrame = requestAnimationFrame(updateTransform);
+});
+
+document.addEventListener("mouseup", () => {
+  if (isDragging) {
+    isDragging = false;
+    mainImage.style.cursor = "grab";
+  }
+});
+
+// Touch Drag
+mainImage.addEventListener("touchstart", (e) => {
+  if (zoomLevel <= 1 || isFitToScreen) return;
+  isDragging = true;
+  startX = e.touches[0].clientX - currentX;
+  startY = e.touches[0].clientY - currentY;
+});
+
+mainImage.addEventListener("touchmove", (e) => {
+  if (!isDragging) return;
+  currentX = e.touches[0].clientX - startX;
+  currentY = e.touches[0].clientY - startY;
+
+  cancelAnimationFrame(animationFrame);
+  animationFrame = requestAnimationFrame(updateTransform);
+});
+
+mainImage.addEventListener("touchend", () => {
+  isDragging = false;
+});
+
+// Zoom Controls
 function applyZoom() {
-  mainImage.style.transform = `scale(${zoomLevel})`;
+  updateTransform();
   if (zoomLevel > 1) {
     mainImage.classList.add("zoomed");
     mainImageContainer.classList.add("zoomed");
@@ -148,49 +206,28 @@ zoomOutBtn.addEventListener("click", () => {
   }
 });
 
-// Reset zoom when image changes or modal closes
 function resetZoom() {
   zoomLevel = 1;
+  currentX = 0;
+  currentY = 0;
   applyZoom();
 }
 
-modalClose.addEventListener("click", () => {
-  resetZoom();
-});
-
-// Also call reset when navigating between images
-prevBtn.addEventListener("click", () => {
-  resetZoom();
-});
-
-nextBtn.addEventListener("click", () => {
-  resetZoom();
-});
-
-thumbs.forEach((thumb, i) => {
-  thumb.addEventListener("click", () => {
-    resetZoom();
-  });
-});
-
-// Fit-to-Screen Toggle Logic
-const fitToScreenBtn = document.getElementById("fitToScreenBtn");
-
-let isFitToScreen = false;
-
+// Fit to screen
 fitToScreenBtn.addEventListener("click", () => {
   isFitToScreen = !isFitToScreen;
 
   if (isFitToScreen) {
+    // Reset everything for clean fit
+    resetZoom();
     mainImage.classList.add("fit-screen");
     mainImage.style.transform = "none";
   } else {
     mainImage.classList.remove("fit-screen");
-    applyZoom(); // restore previous zoom
+    applyZoom(); // restore zoomed state
   }
 });
 
-// Also reset fit-to-screen when navigating or closing
 function resetFitToScreen() {
   isFitToScreen = false;
   mainImage.classList.remove("fit-screen");
