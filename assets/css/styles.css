@@ -739,79 +739,118 @@ body.dark-theme {
 
 /*=============== SERVICES ===============*/
 
-/*=============== SKILLS ===============*/
+/*=============== SKILLS SECTION - REFINED ===============*/
+
+/* Container spacing and consistent section layout */
 .skills__container {
-  row-gap: 0;
+  row-gap: 2.5rem; 
+  padding-inline: 1rem; 
 }
 
+/* Each skill category box (frontend/backend/tools) */
+.skills__content {
+  background-color: var(--project-cards-color);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); 
+  transition: background-color 0.4s, transform 0.3s;
+}
+
+.skills__content:hover {
+  transform: translateY(-3px); /* Slight lift on hover */
+}
+
+/* Header of each category (icon, title, arrow) */
 .skills__header {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   cursor: pointer;
 }
 
-.skills__icon,
-.skills__arrow {
-  font-size: 2rem;
-  color: var(--black-color-light);
-}
-
 .skills__icon {
-  margin-right: 1rem;
+  font-size: 2rem;
+  color: var(--first-color);
+  margin-right: 0.8rem;
 }
 
 .skills__title {
   font-size: var(--h2-font-size);
+  font-weight: var(--font-semi-bold);
+  color: var(--title-color);
 }
 
+/* Expand/collapse arrow */
 .skills__arrow {
   margin-left: auto;
-  margin-top: 4px;
-  transition: 0.4s;
-}
-
-.skills__close .skills__content_icons {
-  height: 0;
-  overflow: hidden;
-}
-
-.skills__open .skills__content_icons {
-  height: max-content;
-  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: var(--black-color-light);
+  transition: transform 0.3s;
 }
 
 .skills__open .skills__arrow {
-  transform: rotate(-180deg);
+  transform: rotate(-180deg); /* Rotate arrow on open */
 }
 
-/* ********************* */
-.skills__img {
-  width: 35px;
-  margin-bottom: 0.5rem;
+/* Collapse/expand animation */
+.skills__close .skills__content_icons {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.4s ease;
 }
 
-.skills__name {
-  font-size: var(--normal-font-size);
-  font-weight: var(--font-medium);
+.skills__open .skills__content_icons {
+  height: auto;
+  margin-top: 1rem;
 }
 
+/* Skill icon layout (grid) */
 .skills__content_icons {
-  grid-template-columns: repeat(3, max-content);
-  justify-content: space-around;
-  align-items: flex-end;
-  margin: 0rem 2rem 2rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 1.2rem;
+  justify-items: center;
+  align-items: center;
 }
 
+/* Each individual skill icon box */
 .skills__box {
-  display: grid;
-  place-items: center;
-  transition: transform 0.4s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s;
 }
 
 .skills__box:hover {
-  transform: translateY(-0.25rem);
+  transform: translateY(-4px);
 }
+
+/* Skill image size */
+.skills__img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 0.5rem;
+  object-fit: contain;
+}
+
+/* Skill name styling */
+.skills__name {
+  font-size: var(--small-font-size);
+  color: var(--text-color);
+  font-weight: var(--font-medium);
+}
+
+/* Dark theme compatibility */
+body.dark-theme .skills__content {
+  background-color: var(--container-color); /* Use dark card color */
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.02);
+}
+
+body.dark-theme .skills__name {
+  color: var(--white-color);
+}
+
 
 /*=============== PROJECTS ===============*/
 .projects {
@@ -1455,6 +1494,7 @@ body.dark-theme {
     display: none;
   }
 }
+
 
 /* For medium1 devices - 576px & below */
 @media screen and (max-width: 576px) {
