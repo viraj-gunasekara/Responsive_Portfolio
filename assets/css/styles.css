@@ -1388,7 +1388,7 @@ body.dark-theme .skills__name {
 }
 
 .modal-main-view #mainImage {
-  width: 90%;            
+  width: 100%;            
   height: auto;           
   max-height: none;       
   object-fit: unset;      
@@ -2139,6 +2139,14 @@ body.dark-theme .skills__name {
   /* image modal  */
   .modal-main-view #nextBtn {
     right: 180px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+
+  /* image modal  */
+  .modal-main-view #nextBtn {
+    margin-left: -24px;
   }
 }
 
