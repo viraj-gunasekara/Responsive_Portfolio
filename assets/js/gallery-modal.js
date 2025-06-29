@@ -92,6 +92,9 @@ function updateModal(index) {
   //set main image AFTER thumbnails are added to DOM
   const imagePath = images[index];
   mainImage.src = imagePath;
+  // Scroll Reset on Image Change 
+  mainImageContainer.scrollTop = 0;
+
   imageIndex.textContent = `${index + 1}/${images.length}`;
   imageTitle.textContent = getImageName(imagePath);
   imageTitle.title = getImageName(imagePath);

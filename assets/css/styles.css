@@ -1373,14 +1373,12 @@ body.dark-theme .skills__name {
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Align image to top */
-  overflow-y: auto;         /* ✅ Allow vertical scroll */
+  align-items: flex-start;
+  overflow-y: auto;     
   overflow-x: hidden;
   padding: 10px;
   height: 425px; /* Fixed height */
 }
-
-
 
 .modal-main-view img {
   max-width: 100%;
@@ -1390,15 +1388,16 @@ body.dark-theme .skills__name {
 }
 
 .modal-main-view #mainImage {
-  width: 90%;             /* ✅ KEEP this for consistent arrow placement */
-  height: auto;           /* Let height grow naturally */
-  max-height: none;       /* Prevent limiting */
-  object-fit: unset;      /* Remove cropping */
+  width: 90%;            
+  height: auto;           
+  max-height: none;       
+  object-fit: unset;      
   object-position: top;
   display: block;
+
+  margin-top: auto;
+  margin-bottom: auto;
 }
-
-
 
 /* Arrows */
 .modal-arrow {
@@ -2087,24 +2086,31 @@ body.dark-theme .skills__name {
     font-size: var(--normal-font-size);
   }
 
-  /* image modal  */
-  .modal-main-view {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 640 / 425;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: start; 
-  }
-
-  .modal-main-view #mainImage {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    object-position: top; 
-  }
-}
+    /* image modal  */
+    .modal-main-view {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 640 / 425;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+  
+    .modal-main-view #mainImage {
+      width: 100%;
+      height: auto;
+      max-height: none;
+      object-fit: unset;
+      object-position: top;
+      display: block;
+  
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+    }
 
 /* For medium2 devices - 768px & above */
 @media screen and (min-width: 768px) {
