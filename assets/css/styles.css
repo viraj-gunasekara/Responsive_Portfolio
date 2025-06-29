@@ -1372,12 +1372,15 @@ body.dark-theme .skills__name {
   flex: 1;
   position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
-  overflow: hidden;
+  align-items: flex-start; /* Align image to top */
+  overflow-y: auto;         /* ✅ Allow vertical scroll */
+  overflow-x: hidden;
   padding: 10px;
-  height: 425px;
+  height: 425px; /* Fixed height */
 }
+
+
 
 .modal-main-view img {
   max-width: 100%;
@@ -1387,11 +1390,15 @@ body.dark-theme .skills__name {
 }
 
 .modal-main-view #mainImage {
-  width: 90%;
-  height: auto;              
-  object-fit: cover;         
+  width: 90%;             /* ✅ KEEP this for consistent arrow placement */
+  height: auto;           /* Let height grow naturally */
+  max-height: none;       /* Prevent limiting */
+  object-fit: unset;      /* Remove cropping */
   object-position: top;
+  display: block;
 }
+
+
 
 /* Arrows */
 .modal-arrow {
