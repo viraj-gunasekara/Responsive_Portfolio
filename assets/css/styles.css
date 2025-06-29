@@ -809,12 +809,12 @@ body.dark-theme {
   transform: translate(6px, -7px);
 }
 
-.job_1_line_rounder .qualification__line{
+.job_1_line_rounder .qualification__line {
   transform: translate(6px, 7px);
   height: 80%;
 }
 
-.job_1_data{
+.job_1_data {
   padding-top: 40px;
 }
 
@@ -1488,8 +1488,8 @@ body.dark-theme .skills__name {
 }
 
 /*=============== BREAKPOINTS ===============*/
-/* For small devices - 340px & below */
-@media screen and (max-width: 340px) {
+/* For small devices - 350px & below */
+@media screen and (max-width: 350px) {
   .container {
     margin-inline: 1rem;
   }
@@ -1590,6 +1590,11 @@ body.dark-theme .skills__name {
 
   .modal-arrow {
     display: none;
+  }
+
+  /* qualification  */
+  .qualification__data {
+    gap: .5rem;
   }
 }
 
@@ -1788,6 +1793,7 @@ body.dark-theme .skills__name {
   .edu-icon {
     font-size: 1.15rem;
   }
+
 }
 
 /* 768px to 1150px  */
@@ -1957,6 +1963,40 @@ body.dark-theme .skills__name {
 
   .button__ghost i {
     font-size: 1.6rem;
+  }
+
+  /* qualification  */
+  .qualification__sections {
+    min-height: 400px;
+  }
+
+  .qualification__data {
+    gap: .5rem;
+  }
+}
+
+/* Gradually Reduce spacing between first div inside qualification__data */
+@media screen and (min-width: 768px) {
+  .qualification__data > div:first-child {
+    margin-bottom: -6.5rem;
+  }
+}
+
+@media screen and (min-width: 830px) {
+  .qualification__data > div:first-child {
+    margin-bottom: -4.5rem;
+  }
+}
+
+@media screen and (min-width: 955px) {
+  .qualification__data > div:first-child {
+    margin-bottom: -2.5rem;
+  }
+}
+
+@media screen and (min-width: 1150px) {
+  .qualification__data > div:first-child {
+    margin-bottom: -0.3rem;
   }
 }
 
