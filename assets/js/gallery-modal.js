@@ -10,23 +10,44 @@ let currentIndex = 0;
 // define images per project
 const projectImages = {
   "project-1": [
-    "assets/img/project-1.jpg",
-    "assets/img/project-2.jpg",
-    "assets/img/project-3.jpg",
-    "assets/img/project-1.jpg",
-    "assets/img/project-2.jpg",
-    "assets/img/project-3.jpg",
+    // 10 
+    "https://raw.githubusercontent.com/viraj-gunasekara/MERN_ClothingStore/refs/heads/main/ui_images/user%20login.JPG",
+    "https://raw.githubusercontent.com/viraj-gunasekara/MERN_ClothingStore/refs/heads/main/ui_images/user%20homepage.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/MERN_ClothingStore/refs/heads/main/ui_images/user%20cloth%20category%20page.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/MERN_ClothingStore/refs/heads/main/ui_images/user%20product%20detail%20page.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/MERN_ClothingStore/refs/heads/main/ui_images/admin%20dashboard.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/MERN_ClothingStore/refs/heads/main/ui_images/admin%20products%20table.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/MERN_ClothingStore/refs/heads/main/ui_images/admin%20create%20products%20form.JPG",
+    "https://raw.githubusercontent.com/viraj-gunasekara/MERN_ClothingStore/refs/heads/main/ui_images/admin%20customers%20table.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/MERN_ClothingStore/refs/heads/main/ui_images/user%20navbar.JPG",
+    "https://raw.githubusercontent.com/viraj-gunasekara/MERN_ClothingStore/refs/heads/main/ui_images/user%20registration.JPG",
   ],
   "project-2": [
-    "assets/img/project-1.jpg",
-    "assets/img/project-2.jpg",
-    "assets/img/project-3.jpg",
+    // 8 
+    "https://raw.githubusercontent.com/viraj-gunasekara/JavaWebProject/refs/heads/main/ui_images/user%20homepage.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/JavaWebProject/refs/heads/main/ui_images/all%20products%20page.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/JavaWebProject/refs/heads/main/ui_images/cart%20overlay.JPG",
+    "https://raw.githubusercontent.com/viraj-gunasekara/JavaWebProject/refs/heads/main/ui_images/user%20search%20products.JPG",
+    "https://raw.githubusercontent.com/viraj-gunasekara/JavaWebProject/refs/heads/main/ui_images/registered%20user%20orders%20page.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/JavaWebProject/refs/heads/main/ui_images/sign%20up%20overlay.JPG",
+    "https://raw.githubusercontent.com/viraj-gunasekara/JavaWebProject/refs/heads/main/ui_images/sign%20in%20overlay.JPG",
+    "https://raw.githubusercontent.com/viraj-gunasekara/JavaWebProject/refs/heads/main/ui_images/reset%20password%20overlay.JPG",
   ],
   "project-3": [
-    "assets/img/project-1.jpg",
-    "assets/img/project-2.jpg",
-    "assets/img/project-3.jpg",
-    "assets/img/project-1.jpg",
+    // 13
+    "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/my%20profile%20%26%20my%20posts.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/edit%20my%20profile.JPG",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/app%20user%20login%20page%20with%20social%20logins.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/app%20user%20homepage.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/add%20posts%2C%20images%2C%20videos.JPG",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/light%20theme.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/view%20%26%20follow%20other%20user%20profiles.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/like%20%26%20comment.JPG",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/search%20existing%20users.JPG",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/create%20meal%20plan.JPG",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/create%20workout%20plan.JPG",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/create%20workout%20status.JPG",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/notifications%20on%20new%20posts.JPG",
   ],
   "project-4": [
     "assets/img/project-1.jpg",
@@ -73,10 +94,15 @@ function updateModal(index) {
   mainImage.src = imagePath;
   imageIndex.textContent = `${index + 1}/${images.length}`;
   imageTitle.textContent = getImageName(imagePath);
+  imageTitle.title = getImageName(imagePath);
 }
 
 function getImageName(path) {
-  return path.split("/").pop().split(".")[0]; // Extracts "project-3d" from path
+  const fileName = decodeURIComponent(path.split("/").pop().split(".")[0]); // "user cloth category page"
+  return fileName
+    .split(" ") // Split into words
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize
+    .join(" "); // Join back with space
 }
 
 // attach modal open logic to each project

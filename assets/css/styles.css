@@ -1341,6 +1341,12 @@ body.dark-theme .skills__name {
   margin: 0;
   font-size: 1.1rem;
   color: var(--white-color);
+
+  /* prevent overlap */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 8px;
 }
 
 .modal-header i {
@@ -1370,6 +1376,7 @@ body.dark-theme .skills__name {
   justify-content: center;
   overflow: hidden;
   padding: 10px;
+  height: 425px;
 }
 
 .modal-main-view img {
@@ -1377,6 +1384,13 @@ body.dark-theme .skills__name {
   max-height: 100%;
   object-fit: contain;
   transition: transform 0.3s ease;
+}
+
+.modal-main-view #mainImage {
+  width: 90%;
+  height: auto;              
+  object-fit: cover;         
+  object-position: top;
 }
 
 /* Arrows */
@@ -1487,7 +1501,7 @@ body.dark-theme .skills__name {
   height: 100vh;
 }
 
-/*=============== BREAKPOINTS ===============*/
+/*=============== BREAKPOINTS - MEDIA Q ===============*/
 /* For small devices - 350px & below */
 @media screen and (max-width: 350px) {
   .container {
@@ -1554,8 +1568,15 @@ body.dark-theme .skills__name {
     padding-left: 5px;
   }
 
-  .modal-header h2,
-  .modal-header i {
+  .modal-header #imageTitle,
+  .modal-header #imageIndex,
+  .modal-header #modalCloseBtn {
+    font-size: 0.8rem;
+  }
+
+  .modal-footer #zoomOutBtn,
+  .modal-footer #zoomInBtn,
+  .modal-footer #fitToScreenBtn {
     font-size: 1rem;
   }
 
@@ -1596,6 +1617,18 @@ body.dark-theme .skills__name {
   .qualification__data {
     gap: .5rem;
   }
+
+  /* projects */
+  .projects__button {
+    padding: 0.55rem;       
+    font-size: 0.8rem;      
+    bottom: -0.8rem;        
+    right: 0.5rem;         
+  }
+
+  .projects__button i {
+    font-size: 1rem; 
+  }
 }
 
 
@@ -1623,13 +1656,16 @@ body.dark-theme .skills__name {
     padding-left: 10px;
   }
 
-  .modal-header h2,
-  .modal-header i {
-    font-size: 1rem;
+  .modal-header #imageTitle,
+  .modal-header #imageIndex,
+  .modal-header #modalCloseBtn {
+    font-size: 0.9rem;
   }
 
-  .modal-footer i {
-    font-size: 1.2rem;
+  .modal-footer #zoomOutBtn,
+  .modal-footer #zoomInBtn,
+  .modal-footer #fitToScreenBtn {
+    font-size: 1.1rem;
   }
 
   .modal-main-view {
@@ -1662,7 +1698,19 @@ body.dark-theme .skills__name {
   }
 
   .modal-arrow {
-    display: none;
+    /* display: none; */
+    font-size: 1.5rem;
+    padding: 4px;
+    top: 45%;
+    transform: translateY(-50%);
+  }
+
+  #prevBtn {
+    left: 35px;
+  }
+
+  #nextBtn.modal-arrow {
+    right: 35px !important;
   }
 
   /* education  */
@@ -1680,6 +1728,18 @@ body.dark-theme .skills__name {
 
   .details__container .edu-icon {
     font-size: 1.09rem;
+  }
+
+  /* projects */
+  .projects__button {
+    padding: 0.75rem;       
+    font-size: 0.9rem;    
+    bottom: -1rem;         
+    right: 0.75rem;        
+  }
+
+  .projects__button i {
+    font-size: 1.1rem; 
   }
 }
 
@@ -1746,7 +1806,19 @@ body.dark-theme .skills__name {
   }
 
   .modal-arrow {
-    display: none;
+    /* display: none; */
+    font-size: 1.8rem;
+    padding: 4px;
+    top: 45%;
+    transform: translateY(-50%);
+  }
+
+  #prevBtn {
+    left: 35px;
+  }
+
+  #nextBtn.modal-arrow {
+    right: 35px !important;
   }
 }
 
@@ -2007,6 +2079,24 @@ body.dark-theme .skills__name {
   .about__info .about__description {
     font-size: var(--normal-font-size);
   }
+
+  /* image modal  */
+  .modal-main-view {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 640 / 425;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: start; 
+  }
+
+  .modal-main-view #mainImage {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: top; 
+  }
 }
 
 /* For medium2 devices - 768px & above */
@@ -2032,6 +2122,8 @@ body.dark-theme .skills__name {
 
 /* 900px below  */
 @media screen and (max-width: 900px) {
+
+  /* image modal  */
   .modal-main-view #nextBtn {
     right: 180px;
   }
@@ -2295,11 +2387,11 @@ body.dark-theme .skills__name {
   /* projects */
   .projects__container {
     grid-template-columns: repeat(3, 352px);
-    padding-block: 3rem 1rem;
+    padding-block: 1rem 1rem;
   }
 
   .projects__card {
-    padding: 1.25rem 1.25rem 2.5rem;
+    padding: 1.25rem 1.25rem 1.25rem;
   }
 
   .projects__image {
