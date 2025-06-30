@@ -174,7 +174,7 @@ sr.reveal(`.home__perfil, .about__image, .contact__mail, .about__perfil`, {origi
 sr.reveal(`.home__name, .home__info,
            .about__container .section__title-1, .about__info,
            .contact__social, .contact__data`, {origin: 'left'})
-sr.reveal(`.projects__card, .skills`, {interval: 90})
+sr.reveal(`.projects__card, .skills`, {interval: 20})
 
 /*=============== SKILLS ACCORDION ===============*/ 
 const skillsContent = document.getElementsByClassName('skills__content'),

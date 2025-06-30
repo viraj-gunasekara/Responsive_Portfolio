@@ -35,12 +35,12 @@ const projectImages = {
   ],
   "project-3": [
     // 13
-    "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/my%20profile%20%26%20my%20posts.png",
-    "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/edit%20my%20profile.JPG",
     "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/app%20user%20login%20page%20with%20social%20logins.png",
     "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/app%20user%20homepage.png",
-    "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/add%20posts%2C%20images%2C%20videos.JPG",
     "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/light%20theme.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/add%20posts%2C%20images%2C%20videos.JPG",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/my%20profile%20%26%20my%20posts.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/edit%20my%20profile.JPG",
     "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/view%20%26%20follow%20other%20user%20profiles.png",
     "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/like%20%26%20comment.JPG",
     "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/search%20existing%20users.JPG",
@@ -50,21 +50,16 @@ const projectImages = {
     "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/notifications%20on%20new%20posts.JPG",
   ],
   "project-4": [
-    "assets/img/project-1.jpg",
-    "assets/img/project-2.jpg",
-    "assets/img/project-3.jpg",
-    "assets/img/project-1.jpg",
+    "",
   ],
   "project-5": [
-    "assets/img/project-1.jpg",
-    "assets/img/project-2.jpg",
-    "assets/img/project-3.jpg",
-    "assets/img/project-1.jpg",
+    "",
   ],
 };
 
 // update global images and regenerate thumbnails dynamically
 let images = [];
+let thumbs = [];
 
 function updateModal(index) {
   currentIndex = index;
@@ -91,13 +86,13 @@ function updateModal(index) {
 
   //set main image AFTER thumbnails are added to DOM
   const imagePath = images[index];
-  mainImage.src = imagePath;
-  // Scroll Reset on Image Change 
-  mainImageContainer.scrollTop = 0;
-
-  imageIndex.textContent = `${index + 1}/${images.length}`;
-  imageTitle.textContent = getImageName(imagePath);
-  imageTitle.title = getImageName(imagePath);
+  if (imagePath) {
+    mainImage.src = imagePath;
+    imageIndex.textContent = `${index + 1}/${images.length}`;
+    imageTitle.textContent = getImageName(imagePath);
+    imageTitle.title = getImageName(imagePath);
+    mainImageContainer.scrollTop = 0;
+  }
 }
 
 function getImageName(path) {
@@ -112,15 +107,17 @@ function getImageName(path) {
 document.querySelectorAll(".open-modal").forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
+
     const projectId = btn.getAttribute("data-project-id");
-    if (!projectImages[projectId]) return;
+    if (!projectImages[projectId] || projectImages[projectId].length === 0) return;
 
     images = projectImages[projectId];
-    updateModal(0);
+    updateModal(0); // Start from first image
     modal.classList.remove("hidden");
     disableScroll();
   });
 });
+
 
 // clean up modal close
 modalClose.addEventListener("click", () => {
@@ -302,17 +299,6 @@ function disableScroll() {
 function enableScroll() {
   document.body.classList.remove("no-scroll");
 }
-
-// On modal open
-document.querySelectorAll(".open-modal").forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    const index = parseInt(btn.getAttribute("data-index"));
-    updateModal(index);
-    modal.classList.remove("hidden");
-    disableScroll(); // Disable background scroll
-  });
-});
 
 // On modal close
 modalClose.addEventListener("click", () => {
