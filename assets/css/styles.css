@@ -19,7 +19,9 @@
   --body-color: hsl(0, 0%, 87%);
   --container-color: hsl(0, 0%, 83%);
   --project-cards-color: hsl(0, 0%, 90%);
-  --image-modal-arrow-color: rgba(70, 70, 70, 0.3);
+  --image-modal-arrow-color: rgba(70, 70, 70, 0.4);
+  --project-image-section: hsl(0, 0%, 25%);
+  --project-image-section-text: hsl(0, 0%, 100%);
 
   /*========== Font and typography ==========*/
   /*.5rem = 8px | 1rem = 16px ...*/
@@ -127,7 +129,9 @@ body.dark-theme {
   --body-color: hsl(0, 0%, 8%);
   --container-color: hsl(0, 0%, 12%);
   --project-cards-color: hsl(0, 0%, 9%);
-  --image-modal-arrow-color: rgba(0, 0, 0, 0.3);
+  --image-modal-arrow-color: rgba(70, 70, 70, 0.4);
+  --project-image-section: hsl(0, 0%, 15%);
+  --project-image-section-text: hsl(0, 0%, 90%);
 }
 
 /*========== 
@@ -1332,12 +1336,12 @@ body.dark-theme .skills__name {
 .modal-header {
   width: 100%;
   max-width: 890px;
-  background-color: var(--black-color);
+  background-color: var(--project-image-section);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 15px;
-  color: var(--white-color);
+  color: var(--project-image-section-text);
   font-weight: bold;
   font-size: 1rem;
   border-radius: 6px 6px 0 0;
@@ -1348,8 +1352,7 @@ body.dark-theme .skills__name {
   text-align: center;
   margin: 0;
   font-size: 1.1rem;
-  color: var(--white-color);
-
+  color: var(--project-image-section-text);
   /* prevent overlap */
   white-space: nowrap;
   overflow: hidden;
@@ -1371,12 +1374,12 @@ body.dark-theme .skills__name {
   display: flex;
   width: 100%;
   max-width: 890px;
-  background-color: var(--black-color);
+  background-color: var(--project-image-section);
 }
 
 /* Main image view */
 .modal-main-view {
-  background-color: var(--black-color);
+  background-color: var(--project-image-section);
   flex: 1;
   position: relative;
   display: flex;
@@ -1440,28 +1443,15 @@ body.dark-theme .skills__name {
 /* Thumbnails */
 .modal-thumbnails {
   width: 160px;
-  background-color: var(--black-color);
+  background-color: var(--project-image-section);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   max-height: 430px;
   padding: 10px;
-  scrollbar-width: thin;
-  /* Firefox */
+  /* scrollbar  */
+  scrollbar-width: auto;
   scrollbar-color: #666 transparent;
-}
-
-.modal-thumbnails::-webkit-scrollbar {
-  width: 6px;
-}
-
-.modal-thumbnails::-webkit-scrollbar-thumb {
-  background-color: #666;
-  border-radius: 3px;
-}
-
-.modal-thumbnails::-webkit-scrollbar-track {
-  background: transparent;
 }
 
 .thumbs-wrapper {
@@ -1480,14 +1470,14 @@ body.dark-theme .skills__name {
 
 .thumb.active {
   opacity: 1;
-  border: 2px solid white;
+  border: 2.1px solid white;
 }
 
 /* ========== Modal Footer ========== */
 .modal-footer {
   width: 100%;
   max-width: 890px;
-  background-color: var(--black-color);
+  background-color: var(--project-image-section);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1499,7 +1489,7 @@ body.dark-theme .skills__name {
 
 .modal-footer i {
   font-size: 1.5rem;
-  color: var(--white-color);
+  color: var(--project-image-section-text);
   cursor: pointer;
   transition: transform 0.2s;
 }
