@@ -165,8 +165,8 @@ function updateThemeIcons(isDark) {
 const sr = ScrollReveal({
   origin: 'top',
   distance: '30px',
-  duration: 2500,
-  delay: 400,
+  duration: 2000,
+  delay: 120,
   // reset: true  //Animation repeat
 })
 
