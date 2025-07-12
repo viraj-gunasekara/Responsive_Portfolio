@@ -50,7 +50,15 @@ const projectImages = {
     "https://raw.githubusercontent.com/viraj-gunasekara/Springboot_Web_App/refs/heads/main/ui_images/notifications%20on%20new%20posts.JPG",
   ],
   "project-4": [
-    "",
+    // 8
+    "https://raw.githubusercontent.com/viraj-gunasekara/Bookstore_App_Android/refs/heads/main/CLIENT%20ui_images/combined%20ui%20images/client%20app%20home%20page%20%26%20view%20books%20in%20a%20category%20page.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Bookstore_App_Android/refs/heads/main/CLIENT%20ui_images/combined%20ui%20images/admin%20app%20dashboard%20%26%20view%20all%20books.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Bookstore_App_Android/refs/heads/main/CLIENT%20ui_images/Firebase%20Cloud%20Firestore%20database.JPG",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Bookstore_App_Android/refs/heads/main/CLIENT%20ui_images/combined%20ui%20images/admin%20update%20book%20details%20%26%20view%20book%20info%20as%20client%20view.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Bookstore_App_Android/refs/heads/main/CLIENT%20ui_images/combined%20ui%20images/admin%20long-press%20on%20book%20open%20delete%20or%20update%20book%20info%2C%20dialog.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Bookstore_App_Android/refs/heads/main/CLIENT%20ui_images/combined%20ui%20images/admin%20add%20home%20page%20promotions%20%26%20banners%20for%20each%20category%20page.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Bookstore_App_Android/refs/heads/main/CLIENT%20ui_images/combined%20ui%20images/client%20app%20profile%20page%20%26%20update%20profile%20page.png",
+    "https://raw.githubusercontent.com/viraj-gunasekara/Bookstore_App_Android/refs/heads/main/CLIENT%20ui_images/combined%20ui%20images/client%20app%20signup%20page%20%26%20forgot%20password%20dialog.png",
   ],
   "project-5": [
     "",

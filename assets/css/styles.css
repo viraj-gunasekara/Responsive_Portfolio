@@ -749,7 +749,7 @@ body.dark-theme {
 
 /* give fix height for content inside #work and #edu */
 .qualification__sections {
-  min-height: 500px;
+  min-height: 410px;
   position: relative;
 }
 
@@ -1272,6 +1272,11 @@ body.dark-theme .skills__name {
   font-weight: var(--font-medium);
 }
 
+/* Hide line break on larger screens */
+.mobile-break {
+  display: none;
+}
+
 /*=============== SCROLL BAR ===============*/
 ::-webkit-scrollbar {
   width: 0.7rem;
@@ -1761,6 +1766,11 @@ body.dark-theme .skills__name {
   .projects__button i {
     font-size: 1.1rem; 
   }
+
+  /* footer */
+  .mobile-break {
+    display: inline;
+  }
 }
 
 /* 576px to 768px  */
@@ -2059,7 +2069,7 @@ body.dark-theme .skills__name {
 
   /* qualification  */
   .qualification__sections {
-    min-height: 400px;
+    min-height: 300px;
   }
 
   .qualification__data {
